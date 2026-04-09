@@ -7,7 +7,7 @@ export const products = [
     farmer: 'Green Valley Farm',
     rating: 4.8,
     category: 'Vegetables',
-    image: '/assets/tomato_farm_1775640647416.png',
+    image: '/assets/tomatoes.png',
     description: 'Fresh, vine-ripened organic tomatoes packed with flavor. Grown without synthetic pesticides.'
   },
   {
@@ -18,7 +18,7 @@ export const products = [
     farmer: 'Sunny Hill Orchards',
     rating: 4.9,
     category: 'Fruits',
-    image: '/assets/apples_farm_1775640718262.png',
+    image: '/assets/apples.png',
     description: 'Hand-picked, perfectly crisp apples directly from our orchard.'
   },
   {
@@ -29,9 +29,9 @@ export const products = [
     farmer: 'Earth Roots Co.',
     rating: 4.6,
     category: 'Vegetables',
-    image: '/assets/potato_farm_1775640827676.png',
+    image: '/assets/potatoes.png',
     description: 'Freshly harvested organic potatoes, perfect for mashing, roasting, or boiling.'
   }
 ]
 
-export const heroImage = '/assets/hero_farm_market_1775640779172.png'
+export const heroImage = 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=2070&auto=format&fit=crop'
