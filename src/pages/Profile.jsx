@@ -1,11 +1,7 @@
-import { User, MapPin, Phone, Package, Calendar, LogOut } from 'lucide-react'
+import { User, MapPin, Phone, LogOut, Package, Calendar } from 'lucide-react'
+import { mockOrders } from '../data/mockData'
 
 export default function Profile({ user }) {
-  const mockOrders = [
-    { id: 'ORD-29381', date: 'Oct 14, 2026', total: 1250.50, status: 'Delivered', items: 3 },
-    { id: 'ORD-29302', date: 'Oct 02, 2026', total: 600.00, status: 'Delivered', items: 1 }
-  ]
-
   return (
     <div className="container animate-fade-in" style={{ padding: '3rem 1.5rem' }}>
       <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>My Profile</h1>

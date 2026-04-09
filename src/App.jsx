@@ -7,12 +7,14 @@ import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
 import Profile from './pages/Profile'
 import Dashboard from './pages/Dashboard'
+import Orders from './pages/Orders'
 import Chat from './pages/Chat'
 import Login from './pages/Login'
 import AIChatbot from './components/AIChatbot'
 
 function App() {
   const [cart, setCart] = useState([])
+  const [orders, setOrders] = useState([])
   const [user, setUser] = useState(null)
   const [theme, setTheme] = useState('light')
 
@@ -46,6 +48,24 @@ function App() {
     setCart(prev => prev.filter(item => item.id !== id))
   }
 
+  const placeOrder = (cartItems) => {
+    if (!cartItems.length) return
+
+    const newOrder = {
+      id: `ORD-${Math.floor(100000 + Math.random() * 900000)}`,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }),
+      total: cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0) * 1.05,
+      status: 'Processing',
+      items: cartItems.reduce((acc, item) => acc + item.quantity, 0),
+      delivery: 'Expected in 3-5 days',
+      cart: cartItems.map(item => ({ name: item.name, qty: item.quantity, price: item.price }))
+    }
+
+    setOrders(prev => [newOrder, ...prev])
+    setCart([])
+    return newOrder
+  }
+
   return (
     <div className="app-container">
       <Navbar
@@ -62,8 +82,9 @@ function App() {
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/marketplace" element={<Marketplace addToCart={addToCart} user={user} />} />
           <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} setCart={setCart} />} />
+          <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} setCart={setCart} placeOrder={placeOrder} />} />
           <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/login" />} />
+          <Route path="/orders" element={user ? <Orders user={user} orders={orders} /> : <Navigate to="/login" />} />
           <Route path="/dashboard" element={user && user.role === 'farmer' ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path="/chat" element={user ? <Chat /> : <Navigate to="/login" />} />
         </Routes>

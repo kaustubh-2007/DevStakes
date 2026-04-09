@@ -37,6 +37,11 @@ export default function Navbar({ cartCount, user, setUser, theme, toggleTheme })
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <Link to="/" style={{ ...navLinkStyle, color: isActive('/') ? 'var(--accent-color)' : 'var(--text-primary)' }}>Home</Link>
             <Link to="/marketplace" style={{ ...navLinkStyle, color: isActive('/marketplace') ? 'var(--accent-color)' : 'var(--text-primary)' }}>Marketplace</Link>
+            {user && user.role !== 'farmer' && (
+              <Link to="/orders" style={{ ...navLinkStyle, color: isActive('/orders') ? 'var(--accent-color)' : 'var(--text-primary)' }}>
+                Orders
+              </Link>
+            )}
             {user && user.role === 'farmer' && (
               <Link to="/dashboard" style={{ ...navLinkStyle, color: isActive('/dashboard') ? 'var(--accent-color)' : 'var(--text-primary)' }}>
                 <LayoutDashboard size={20} /> Dashboard

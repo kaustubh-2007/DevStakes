@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Trash2, ArrowRight, CheckCircle } from 'lucide-react'
 
-export default function Cart({ cart, removeFromCart, setCart }) {
+export default function Cart({ cart, removeFromCart, setCart, placeOrder }) {
   const [success, setSuccess] = useState(false)
 
   const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
@@ -101,7 +101,7 @@ export default function Cart({ cart, removeFromCart, setCart }) {
               className="btn btn-primary"
               style={{ width: '100%', marginTop: '2rem', padding: '1rem' }}
               onClick={() => {
-                setCart([])
+                placeOrder(cart)
                 setSuccess(true)
               }}
             >

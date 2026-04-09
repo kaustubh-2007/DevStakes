@@ -67,4 +67,42 @@ export const products = [
   }
 ]
 
+export const mockOrders = [
+  {
+    id: 'ORD-29381',
+    date: 'Apr 08, 2026',
+    total: 1250.5,
+    status: 'Delivered',
+    items: 3,
+    delivery: 'Delivered on Apr 12',
+    cart: [
+      { name: 'Organic Red Tomatoes', qty: 2, price: 40 },
+      { name: 'Rustic Farm Potatoes', qty: 3, price: 30 }
+    ]
+  },
+  {
+    id: 'ORD-29302',
+    date: 'Apr 02, 2026',
+    total: 600,
+    status: 'In Transit',
+    items: 1,
+    delivery: 'Expected Apr 10',
+    cart: [
+      { name: 'Ripe Yellow Mangoes', qty: 4, price: 150 }
+    ]
+  },
+  {
+    id: 'ORD-29274',
+    date: 'Mar 28, 2026',
+    total: 860,
+    status: 'Delivered',
+    items: 2,
+    delivery: 'Delivered on Apr 02',
+    cart: [
+      { name: 'Golden Sweet Corn', qty: 6, price: 25 },
+      { name: 'Organic Golden Wheat', qty: 5, price: 55 }
+    ]
+  }
+]
+
 export const heroImage = 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=2070&auto=format&fit=crop'
