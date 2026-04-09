@@ -31,6 +31,39 @@ export const products = [
     category: 'Vegetables',
     image: '/assets/potatoes.png',
     description: 'Freshly harvested organic potatoes, perfect for mashing, roasting, or boiling.'
+  },
+  {
+    id: 4,
+    name: 'Golden Sweet Corn',
+    price: 25,
+    unit: 'kg',
+    farmer: 'Sunshine Acres',
+    rating: 4.7,
+    category: 'Vegetables',
+    image: '/assets/corn.png',
+    description: 'Freshly harvested organic golden sweet corn perfect for roasting or boiling.'
+  },
+  {
+    id: 5,
+    name: 'Organic Golden Wheat',
+    price: 55,
+    unit: 'kg',
+    farmer: 'Amber Waves Farm',
+    rating: 4.5,
+    category: 'Grains',
+    image: '/assets/wheat.png',
+    description: 'High quality golden organic wheat stalks harvested with care.'
+  },
+  {
+    id: 6,
+    name: 'Ripe Yellow Mangoes',
+    price: 150,
+    unit: 'kg',
+    farmer: 'Tropical Harvest',
+    rating: 4.9,
+    category: 'Fruits',
+    image: '/assets/mango.png',
+    description: 'Fresh, sweet, and juicy hand-picked tropical organic yellow mangoes.'
   }
 ]
 
