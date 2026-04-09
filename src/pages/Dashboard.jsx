@@ -11,9 +11,27 @@ export default function Dashboard({ farmerProducts, addProduct }) {
   const [imageFile, setImageFile] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
 
-  const handleSuggest = () => {
-    // Mock simple logic for AI price suggestion
-    setSuggestedPrice(42)
+  const handleSuggest = async () => {
+    try {
+      const month = new Date().getMonth() + 1
+      const rainfall = 100 // Default value for now
+      let searchCategory = category.toLowerCase()
+      // map category to something the model might expect if needed
+      if (searchCategory === 'vegetables') searchCategory = 'tomatoes'
+      if (searchCategory === 'fruits') searchCategory = 'mango'
+      if (searchCategory === 'grains') searchCategory = 'wheat'
+
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/predict-price?category=${searchCategory}&month=${month}&rainfall=${rainfall}`)
+      
+      if (!res.ok) throw new Error('API error')
+      
+      const data = await res.json()
+      setSuggestedPrice(data.predicted_price.toFixed(2))
+    } catch (err) {
+      console.error('Failed to get suggestion:', err)
+      // Fallback to mock simple logic
+      setSuggestedPrice(42)
+    }
   }
 
   const handleImageChange = (e) => {

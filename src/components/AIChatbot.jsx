@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { MessageCircle, X, Send, Bot } from 'lucide-react'
 import axios from 'axios'
 
-const API = 'http://localhost:8000'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 const SUGGESTIONS = [
   'What should I grow in black soil in monsoon?',
