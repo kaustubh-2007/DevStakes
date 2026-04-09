@@ -97,6 +97,10 @@ export default function Cart({ cart, removeFromCart, setCart, placeOrder }) {
               <span style={{ color: 'var(--success-color)' }}>₹{(total * 1.05).toFixed(2)}</span>
             </div>
 
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--glass-border)' }}>
+              <img src="/assets/qr.jpeg" alt="Payment QR Code" style={{ width: '150px', height: '150px', borderRadius: '12px' }} />
+            </div>
+
             <button
               className="btn btn-primary"
               style={{ width: '100%', marginTop: '2rem', padding: '1rem' }}
