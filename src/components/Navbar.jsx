@@ -18,7 +18,7 @@ export default function Navbar({ cartCount, user, setUser }) {
       top: 0,
       width: '100%',
       zIndex: 1000,
-      background: 'rgba(15, 12, 41, 0.8)',
+      background: 'rgba(255, 255, 255, 0.9)',
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid var(--glass-border)'
     }}>
@@ -28,27 +28,27 @@ export default function Navbar({ cartCount, user, setUser }) {
         alignItems: 'center',
         height: '80px'
       }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'white' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'var(--text-primary)' }}>
           <Sprout size={32} color="var(--success-color)" />
           <span style={{ fontSize: '1.5rem', fontWeight: 700 }} className="poppins">Farm2City</span>
         </Link>
         
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <Link to="/marketplace" style={{ ...navLinkStyle, color: isActive('/marketplace') ? 'var(--accent-color)' : 'white' }}>Marketplace</Link>
+            <Link to="/marketplace" style={{ ...navLinkStyle, color: isActive('/marketplace') ? 'var(--accent-color)' : 'var(--text-primary)' }}>Marketplace</Link>
             {user && user.role === 'farmer' && (
-              <Link to="/dashboard" style={{ ...navLinkStyle, color: isActive('/dashboard') ? 'var(--accent-color)' : 'white' }}>
+              <Link to="/dashboard" style={{ ...navLinkStyle, color: isActive('/dashboard') ? 'var(--accent-color)' : 'var(--text-primary)' }}>
                 <LayoutDashboard size={20} /> Dashboard
               </Link>
             )}
           </div>
           
           <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', borderLeft: '1px solid var(--glass-border)', paddingLeft: '1.5rem' }}>
-            <Link to="/chat" style={{ position: 'relative', color: 'white' }}>
+            <Link to="/chat" style={{ position: 'relative', color: 'var(--text-primary)' }}>
               <MessageSquare size={24} />
             </Link>
 
-            <Link to="/cart" style={{ position: 'relative', color: 'white' }}>
+            <Link to="/cart" style={{ position: 'relative', color: 'var(--text-primary)' }}>
               <ShoppingCart size={24} />
               {cartCount > 0 && (
                 <span style={{
@@ -74,7 +74,7 @@ export default function Navbar({ cartCount, user, setUser }) {
             
             {user ? (
               <>
-                <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', textDecoration: 'none' }}>
+                <Link to="/profile" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', textDecoration: 'none' }}>
                   <div style={{
                     width: '40px',
                     height: '40px',

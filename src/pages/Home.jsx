@@ -19,21 +19,21 @@ export default function Home() {
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'brightness(0.4)',
+          filter: 'brightness(0.8)',
           zIndex: -1
         }}></div>
         <div style={{
           position: 'absolute',
           top: 0, left: 0, width: '100%', height: '100%',
-          background: 'linear-gradient(to right, rgba(15,12,41,1) 0%, rgba(15,12,41,0.5) 50%, rgba(15,12,41,0) 100%)',
+          background: 'linear-gradient(90deg, rgba(27, 58, 10, 0.95) 0%, rgba(76, 138, 24, 0.7) 50%, rgba(111, 181, 38, 0.3) 100%)',
           zIndex: -1
         }}></div>
 
-        <div style={{ maxWidth: '800px' }}>
+        <div style={{ maxWidth: '800px', color: 'white' }}>
           <h1 style={{ fontSize: '4.5rem', lineHeight: '1.1', marginBottom: '1.5rem', fontWeight: 800 }}>
             <span className="text-gradient">Connecting Farmers</span> Direct to Consumers
           </h1>
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2.5rem', maxWidth: '600px' }}>
+          <p style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.9)', marginBottom: '2.5rem', maxWidth: '600px' }}>
             Bypass the middlemen. Buy fresh, organic produce directly from local farmers with AI-driven fair pricing and transparent sourcing.
           </p>
           <div style={{ display: 'flex', gap: '1rem' }}>
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           <div className="glass-card" style={{ padding: '2.5rem', textAlign: 'center' }}>
-            <div style={{ background: 'rgba(139, 92, 246, 0.2)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'var(--accent-color)' }}>
+            <div style={{ background: 'rgba(114, 184, 38, 0.2)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'var(--accent-color)' }}>
               <TrendingDown size={32} />
             </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>AI Price Suggestions</h3>
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
 
           <div className="glass-card" style={{ padding: '2.5rem', textAlign: 'center' }}>
-            <div style={{ background: 'rgba(56, 189, 248, 0.2)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: '#38bdf8' }}>
+            <div style={{ background: 'rgba(114, 184, 38, 0.2)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'var(--accent-color)' }}>
               <ShieldCheck size={32} />
             </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Transparent Pricing</h3>
@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       <section className="container" style={{ padding: '2rem 1.5rem 6rem' }}>
-        <div className="glass-panel" style={{ padding: '3rem', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(139, 92, 246, 0.1))', textAlign: 'center' }}>
+        <div className="glass-panel" style={{ padding: '3rem', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(114, 184, 38, 0.1))', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Thought of the Day</h2>
           <p style={{ fontSize: '1.5rem', fontStyle: 'italic', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto' }}>
             "The discovery of agriculture was the first big step toward a civilized life."

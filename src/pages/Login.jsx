@@ -44,9 +44,9 @@ export default function Login({ setUser }) {
               onClick={() => setRole('buyer')}
               style={{
                 flex: 1, padding: '1rem', borderRadius: '12px', border: '1px solid',
-                backgroundColor: role === 'buyer' ? 'rgba(139, 92, 246, 0.2)' : 'rgba(0,0,0,0.2)',
+                backgroundColor: role === 'buyer' ? 'rgba(114, 184, 38, 0.2)' : 'var(--glass-bg)',
                 borderColor: role === 'buyer' ? 'var(--accent-color)' : 'var(--glass-border)',
-                color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', transition: 'all 0.3s'
+                color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', transition: 'all 0.3s'
               }}
             >
               <User size={24} color={role === 'buyer' ? 'var(--accent-color)' : 'var(--text-secondary)'} />
@@ -56,9 +56,9 @@ export default function Login({ setUser }) {
               onClick={() => setRole('farmer')}
               style={{
                 flex: 1, padding: '1rem', borderRadius: '12px', border: '1px solid',
-                backgroundColor: role === 'farmer' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(0,0,0,0.2)',
+                backgroundColor: role === 'farmer' ? 'rgba(16, 185, 129, 0.2)' : 'var(--glass-bg)',
                 borderColor: role === 'farmer' ? 'var(--success-color)' : 'var(--glass-border)',
-                color: 'white', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', transition: 'all 0.3s'
+                color: 'var(--text-primary)', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', transition: 'all 0.3s'
               }}
             >
               <Tractor size={24} color={role === 'farmer' ? 'var(--success-color)' : 'var(--text-secondary)'} />
@@ -69,11 +69,11 @@ export default function Login({ setUser }) {
           <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
               <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Email Address</label>
-              <input type="email" required placeholder="name@example.com" style={{ width: '100%', padding: '1rem', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', borderRadius: '8px', color: 'white', outline: 'none' }} defaultValue={role === 'farmer' ? 'farmer@greenvalley.com' : 'buyer@example.com'} />
+              <input type="email" required placeholder="name@example.com" style={{ width: '100%', padding: '1rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '8px', color: 'var(--text-primary)', outline: 'none' }} defaultValue={role === 'farmer' ? 'farmer@greenvalley.com' : 'buyer@example.com'} />
             </div>
             <div>
               <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Password</label>
-              <input type="password" required placeholder="••••••••" defaultValue="password123" style={{ width: '100%', padding: '1rem', background: 'rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', borderRadius: '8px', color: 'white', outline: 'none' }} />
+              <input type="password" required placeholder="••••••••" defaultValue="password123" style={{ width: '100%', padding: '1rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '8px', color: 'var(--text-primary)', outline: 'none' }} />
             </div>
             
             <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem', marginTop: '1rem' }}>
