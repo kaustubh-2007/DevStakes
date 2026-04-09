@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { PlusCircle, Package as PkgIcon, DollarSign, Activity, Image as ImageIcon } from 'lucide-react'
-import { products } from '../data/mockData'
 
-export default function Dashboard() {
+export default function Dashboard({ farmerProducts, addProduct }) {
   const [activeTab, setActiveTab] = useState('add')
   const [productName, setProductName] = useState('')
   const [category, setCategory] = useState('Vegetables')
@@ -11,7 +10,6 @@ export default function Dashboard() {
   const [suggestedPrice, setSuggestedPrice] = useState(null)
   const [imageFile, setImageFile] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
-  const [listedProducts, setListedProducts] = useState(products)
 
   const handleSuggest = () => {
     // Mock simple logic for AI price suggestion
@@ -32,19 +30,14 @@ export default function Dashboard() {
       return
     }
 
-    const newProduct = {
-      id: listedProducts.length + 1,
+    addProduct({
       name: productName,
       price: Number(price),
-      unit: 'kg',
-      farmer: 'Your Farm',
-      rating: 4.5,
       category,
       image: imagePreview || '/assets/tomatoes.png',
       description: 'New product added by the farmer.'
-    }
+    })
 
-    setListedProducts([newProduct, ...listedProducts])
     setProductName('')
     setCategory('Vegetables')
     setQuantity('')
@@ -209,7 +202,7 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {listedProducts.map((p, i) => (
+                  {farmerProducts.map((p, i) => (
                     <tr key={i}>
                       <td style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <img src={p.image} alt={p.name} style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} />

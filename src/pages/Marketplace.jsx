@@ -3,14 +3,17 @@ import ProductCard from '../components/ProductCard'
 import { products as mockProducts } from '../data/mockData'
 import { Filter, Search } from 'lucide-react'
 
-export default function Marketplace({ addToCart }) {
+export default function Marketplace({ addToCart, user, farmerProducts }) {
   const [filter, setFilter] = useState('All')
   const [search, setSearch] = useState('')
   const [sortBy, setSortBy] = useState('price_low')
 
   const categories = ['All', 'Vegetables', 'Fruits', 'Grains']
 
-  const filteredProducts = mockProducts
+  // Combine mock products and farmer products
+  const allProducts = [...mockProducts, ...farmerProducts]
+
+  const filteredProducts = allProducts
     .filter(p => {
       const matchesFilter = filter === 'All' || p.category === filter
       const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())

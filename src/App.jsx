@@ -15,6 +15,7 @@ import AIChatbot from './components/AIChatbot'
 function App() {
   const [cart, setCart] = useState([])
   const [orders, setOrders] = useState([])
+  const [farmerProducts, setFarmerProducts] = useState([])
   const [user, setUser] = useState(null)
   const [theme, setTheme] = useState('light')
 
@@ -66,6 +67,18 @@ function App() {
     return newOrder
   }
 
+  const addProduct = (productData) => {
+    const newProduct = {
+      id: `FP-${Date.now()}`,
+      ...productData,
+      farmer: user?.name || 'Your Farm',
+      rating: 4.5,
+      unit: 'kg'
+    }
+    setFarmerProducts(prev => [newProduct, ...prev])
+    return newProduct
+  }
+
   return (
     <div className="app-container">
       <Navbar
@@ -80,12 +93,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/marketplace" element={<Marketplace addToCart={addToCart} user={user} />} />
+          <Route path="/marketplace" element={<Marketplace addToCart={addToCart} user={user} farmerProducts={farmerProducts} />} />
           <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} />} />
           <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} setCart={setCart} placeOrder={placeOrder} />} />
           <Route path="/profile" element={user ? <Profile user={user} orders={orders} /> : <Navigate to="/login" />} />
           <Route path="/orders" element={user ? <Orders user={user} orders={orders} /> : <Navigate to="/login" />} />
-          <Route path="/dashboard" element={user && user.role === 'farmer' ? <Dashboard /> : <Navigate to="/login" />} />
+          <Route path="/dashboard" element={user && user.role === 'farmer' ? <Dashboard farmerProducts={farmerProducts} addProduct={addProduct} /> : <Navigate to="/login" />} />
           <Route path="/chat" element={user ? <Chat /> : <Navigate to="/login" />} />
         </Routes>
       </main>
