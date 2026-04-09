@@ -6,14 +6,28 @@ import { Filter, Search } from 'lucide-react'
 export default function Marketplace({ addToCart }) {
   const [filter, setFilter] = useState('All')
   const [search, setSearch] = useState('')
+  const [sortBy, setSortBy] = useState('price_low')
 
   const categories = ['All', 'Vegetables', 'Fruits', 'Grains']
 
-  const filteredProducts = mockProducts.filter(p => {
-    const matchesFilter = filter === 'All' || p.category === filter
-    const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
-    return matchesFilter && matchesSearch
-  })
+  const filteredProducts = mockProducts
+    .filter(p => {
+      const matchesFilter = filter === 'All' || p.category === filter
+      const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
+      return matchesFilter && matchesSearch
+    })
+    .sort((a, b) => {
+      if (sortBy === 'price_low') {
+        return a.price - b.price
+      }
+      if (sortBy === 'price_high') {
+        return b.price - a.price
+      }
+      if (sortBy === 'bestseller') {
+        return b.rating - a.rating
+      }
+      return 0
+    })
 
   return (
     <div className="container animate-fade-in" style={{ padding: '3rem 1.5rem' }}>
@@ -23,7 +37,7 @@ export default function Marketplace({ addToCart }) {
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>Support local farmers directly.</p>
         </div>
 
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ position: 'relative' }}>
             <Search size={20} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
             <input 
@@ -62,6 +76,54 @@ export default function Marketplace({ addToCart }) {
                 {c}
               </button>
             ))}
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'var(--glass-bg)', padding: '0.75rem 1rem', borderRadius: '12px', border: '1px solid var(--glass-border)' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Sort:</span>
+              <button
+                type="button"
+                onClick={() => setSortBy('price_low')}
+                style={{
+                  padding: '0.5rem 0.85rem',
+                  borderRadius: '8px',
+                  border: sortBy === 'price_low' ? '1px solid var(--accent-color)' : '1px solid transparent',
+                  background: sortBy === 'price_low' ? 'var(--accent-color)' : 'transparent',
+                  color: sortBy === 'price_low' ? 'white' : 'var(--text-primary)',
+                  cursor: 'pointer'
+                }}
+              >
+                Price: Low to High
+              </button>
+              <button
+                type="button"
+                onClick={() => setSortBy('price_high')}
+                style={{
+                  padding: '0.5rem 0.85rem',
+                  borderRadius: '8px',
+                  border: sortBy === 'price_high' ? '1px solid var(--accent-color)' : '1px solid transparent',
+                  background: sortBy === 'price_high' ? 'var(--accent-color)' : 'transparent',
+                  color: sortBy === 'price_high' ? 'white' : 'var(--text-primary)',
+                  cursor: 'pointer'
+                }}
+              >
+                Price: High to Low
+              </button>
+              <button
+                type="button"
+                onClick={() => setSortBy('bestseller')}
+                style={{
+                  padding: '0.5rem 0.85rem',
+                  borderRadius: '8px',
+                  border: sortBy === 'bestseller' ? '1px solid var(--accent-color)' : '1px solid transparent',
+                  background: sortBy === 'bestseller' ? 'var(--accent-color)' : 'transparent',
+                  color: sortBy === 'bestseller' ? 'white' : 'var(--text-primary)',
+                  cursor: 'pointer'
+                }}
+              >
+                Bestseller
+              </button>
+            </div>
           </div>
         </div>
       </div>

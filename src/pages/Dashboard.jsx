@@ -4,12 +4,55 @@ import { products } from '../data/mockData'
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('add')
+  const [productName, setProductName] = useState('')
+  const [category, setCategory] = useState('Vegetables')
+  const [quantity, setQuantity] = useState('')
   const [price, setPrice] = useState('')
   const [suggestedPrice, setSuggestedPrice] = useState(null)
+  const [imageFile, setImageFile] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
+  const [listedProducts, setListedProducts] = useState(products)
 
   const handleSuggest = () => {
     // Mock simple logic for AI price suggestion
     setSuggestedPrice(42)
+  }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setImageFile(file)
+      setImagePreview(URL.createObjectURL(file))
+    }
+  }
+
+  const handlePublish = () => {
+    if (!productName || !price || !quantity) {
+      alert('Please fill in product name, price, and quantity before publishing.')
+      return
+    }
+
+    const newProduct = {
+      id: listedProducts.length + 1,
+      name: productName,
+      price: Number(price),
+      unit: 'kg',
+      farmer: 'Your Farm',
+      rating: 4.5,
+      category,
+      image: imagePreview || '/assets/tomatoes.png',
+      description: 'New product added by the farmer.'
+    }
+
+    setListedProducts([newProduct, ...listedProducts])
+    setProductName('')
+    setCategory('Vegetables')
+    setQuantity('')
+    setPrice('')
+    setImageFile(null)
+    setImagePreview(null)
+    setSuggestedPrice(null)
+    alert('Product published successfully!')
   }
 
   return (
@@ -52,12 +95,18 @@ export default function Dashboard() {
                   
                   <div className="form-group">
                     <label style={labelStyle}>Product Name</label>
-                    <input type="text" placeholder="e.g. Organic Carrots" style={inputStyle} />
+                    <input
+                      type="text"
+                      placeholder="e.g. Organic Carrots"
+                      value={productName}
+                      onChange={(e) => setProductName(e.target.value)}
+                      style={inputStyle}
+                    />
                   </div>
                   
                   <div className="form-group">
                     <label style={labelStyle}>Category</label>
-                    <select style={inputStyle}>
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} style={inputStyle}>
                       <option>Vegetables</option>
                       <option>Fruits</option>
                       <option>Grains</option>
@@ -66,7 +115,13 @@ export default function Dashboard() {
 
                   <div className="form-group">
                     <label style={labelStyle}>Quantity (Available)</label>
-                    <input type="number" placeholder="50" style={inputStyle} />
+                    <input
+                      type="number"
+                      placeholder="50"
+                      value={quantity}
+                      onChange={(e) => setQuantity(e.target.value)}
+                      style={inputStyle}
+                    />
                   </div>
 
                   <div className="form-group" style={{ position: 'relative' }}>
@@ -100,14 +155,14 @@ export default function Dashboard() {
                     </div>
                   )}
 
-                  <button className="btn btn-primary" style={{ marginTop: '1rem' }}>
+                  <button className="btn btn-primary" onClick={handlePublish} style={{ marginTop: '1rem' }}>
                     Publish Product
                   </button>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <label style={labelStyle}>Upload Image</label>
-                  <div style={{ 
+                  <label htmlFor="product-image-upload" style={{ 
                     border: '2px dashed var(--glass-border)', 
                     borderRadius: '12px', 
                     flex: 1, 
@@ -116,11 +171,27 @@ export default function Dashboard() {
                     alignItems: 'center', 
                     justifyContent: 'center',
                     background: 'rgba(0,0,0,0.2)',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    overflow: 'hidden',
+                    textAlign: 'center',
+                    padding: '1rem'
                   }}>
-                    <ImageIcon size={48} color="var(--text-secondary)" style={{ marginBottom: '1rem' }} />
-                    <p style={{ color: 'var(--text-secondary)' }}>Click or drag image to upload</p>
-                  </div>
+                    <input
+                      id="product-image-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      style={{ display: 'none' }}
+                    />
+                    {imagePreview ? (
+                      <img src={imagePreview} alt="Product preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ) : (
+                      <>
+                        <ImageIcon size={48} color="var(--text-secondary)" style={{ marginBottom: '1rem' }} />
+                        <p style={{ color: 'var(--text-secondary)' }}>Click to upload image</p>
+                      </>
+                    )}
+                  </label>
                 </div>
 
               </div>
@@ -138,7 +209,7 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.slice(0, 2).map((p, i) => (
+                  {listedProducts.map((p, i) => (
                     <tr key={i}>
                       <td style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <img src={p.image} alt={p.name} style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} />

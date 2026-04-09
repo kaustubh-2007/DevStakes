@@ -6,6 +6,10 @@ export default function Login({ setUser }) {
   const navigate = useNavigate()
   const [role, setRole] = useState('buyer') // 'buyer' or 'farmer'
 
+  const handleRoleChange = (newRole) => {
+    setRole(newRole)
+  }
+
   const handleLogin = (e) => {
     e.preventDefault()
     // Mock login by setting user state
@@ -41,7 +45,7 @@ export default function Login({ setUser }) {
 
           <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
             <button 
-              onClick={() => setRole('buyer')}
+              onClick={() => handleRoleChange('buyer')}
               style={{
                 flex: 1, padding: '1rem', borderRadius: '12px', border: '1px solid',
                 backgroundColor: role === 'buyer' ? 'rgba(114, 184, 38, 0.2)' : 'var(--glass-bg)',
