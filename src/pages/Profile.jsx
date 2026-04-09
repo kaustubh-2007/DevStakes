@@ -1,7 +1,6 @@
-import { User, MapPin, Phone, LogOut, Package, Calendar } from 'lucide-react'
-import { mockOrders } from '../data/mockData'
+import { User, MapPin, Phone } from 'lucide-react'
 
-export default function Profile({ user }) {
+export default function Profile({ user, orders }) {
   return (
     <div className="container animate-fade-in" style={{ padding: '3rem 1.5rem' }}>
       <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>My Profile</h1>
@@ -54,35 +53,33 @@ export default function Profile({ user }) {
           </button>
         </div>
 
-        {/* Order History */}
         <div>
-          <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>Order History</h2>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {mockOrders.map(order => (
-              <div key={order.id} className="glass-card" style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '1rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
-                    <Package size={20} color="var(--accent-color)" /> {order.id}
-                  </div>
-                  <span style={{ color: 'var(--success-color)', background: 'rgba(16, 185, 129, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '6px', fontSize: '0.9rem' }}>
-                    {order.status}
-                  </span>
-                </div>
-                
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Calendar size={18} /> {order.date}
-                  </div>
-                  <div>
-                    {order.items} Items
-                  </div>
-                  <div style={{ fontWeight: 'bold', color: 'white' }}>
-                    ₹{order.total.toFixed(2)}
-                  </div>
-                </div>
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>Account at a Glance</h2>
+          <div className="glass-card" style={{ padding: '2rem', borderRadius: '20px', display: 'grid', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+              <div>
+                <div style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>Orders Completed</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: 700 }}>{orders.length}</div>
               </div>
-            ))}
+              <div style={{ padding: '0.75rem 1rem', borderRadius: '16px', background: 'rgba(114, 184, 38, 0.1)', color: 'var(--success-color)', fontWeight: 700 }}>
+                New
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '16px' }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Favorite Category</div>
+                <div style={{ fontWeight: 600, marginTop: '0.5rem' }}>Fresh Vegetables</div>
+              </div>
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '16px' }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Preferred Farm</div>
+                <div style={{ fontWeight: 600, marginTop: '0.5rem' }}>Green Valley Farm</div>
+              </div>
+            </div>
+
+            <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
+              Track your activity and update your preferences anytime. Orders you place will show up here once you start shopping.
+            </p>
           </div>
         </div>
 
