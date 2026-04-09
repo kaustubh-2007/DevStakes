@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -14,6 +14,23 @@ import AIChatbot from './components/AIChatbot'
 function App() {
   const [cart, setCart] = useState([])
   const [user, setUser] = useState(null)
+  const [theme, setTheme] = useState('light')
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('farm2city-theme')
+    if (storedTheme === 'dark' || storedTheme === 'light') {
+      setTheme(storedTheme)
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark')
+    }
+  }, [])
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', theme === 'dark')
+    window.localStorage.setItem('farm2city-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
 
   const addToCart = (product) => {
     setCart((prev) => {
@@ -31,7 +48,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)} user={user} setUser={setUser} />
+      <Navbar
+        cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)}
+        user={user}
+        setUser={setUser}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
       
       <main style={{ paddingTop: '80px', minHeight: 'calc(100vh - 80px)' }}>
         <Routes>

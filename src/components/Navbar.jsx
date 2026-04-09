@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { ShoppingCart, User, Sprout, LayoutDashboard, MessageSquare, LogOut } from 'lucide-react'
+import { ShoppingCart, User, Sprout, LayoutDashboard, LogOut, Moon, Sun } from 'lucide-react'
 
-export default function Navbar({ cartCount, user, setUser }) {
+export default function Navbar({ cartCount, user, setUser, theme, toggleTheme }) {
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -18,7 +18,7 @@ export default function Navbar({ cartCount, user, setUser }) {
       top: 0,
       width: '100%',
       zIndex: 1000,
-      background: 'rgba(255, 255, 255, 0.9)',
+      background: 'var(--nav-bg)',
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid var(--glass-border)'
     }}>
@@ -44,9 +44,15 @@ export default function Navbar({ cartCount, user, setUser }) {
           </div>
           
           <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', borderLeft: '1px solid var(--glass-border)', paddingLeft: '1.5rem' }}>
-            <Link to="/chat" style={{ position: 'relative', color: 'var(--text-primary)' }}>
-              <MessageSquare size={24} />
-            </Link>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              className="theme-toggle-btn"
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
 
             <Link to="/cart" style={{ position: 'relative', color: 'var(--text-primary)' }}>
               <ShoppingCart size={24} />
