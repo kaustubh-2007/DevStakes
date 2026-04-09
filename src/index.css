@@ -74,6 +74,26 @@ body.dark-theme .theme-toggle-btn {
   color: var(--text-primary);
 }
 
+body.dark-theme .glass-panel,
+body.dark-theme .glass-card {
+  background: rgba(12, 18, 39, 0.78);
+  border-color: rgba(121, 143, 255, 0.16);
+}
+
+body.dark-theme .glass-card:hover {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-theme .btn-secondary {
+  color: #dce4ff;
+  border-color: rgba(140, 207, 111, 0.4);
+}
+
+body.dark-theme .btn-secondary:hover {
+  background: rgba(140, 207, 111, 0.12);
+}
+
 /* Glassmorphism Utilities */
 .glass-panel {
   background: var(--glass-bg);
