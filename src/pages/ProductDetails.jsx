@@ -37,7 +37,7 @@ export default function ProductDetails({ addToCart }) {
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>{product.description}</p>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', marginBottom: '2rem' }}>
-            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'linear-gradient(135deg, #a855f7, #6366f1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'linear-gradient(135deg, #8ad33b, #65a822)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontWeight: 'bold' }}>{product.farmer.charAt(0)}</span>
             </div>
             <div>

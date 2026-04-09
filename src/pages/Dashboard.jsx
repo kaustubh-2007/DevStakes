@@ -89,8 +89,8 @@ export default function Dashboard() {
                   </div>
 
                   {suggestedPrice && (
-                    <div className="animate-fade-in" style={{ padding: '1rem', background: 'rgba(139, 92, 246, 0.1)', border: '1px solid var(--accent-color)', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ color: '#d8b4fe' }}>AI Suggested Price: <strong>₹{suggestedPrice}/unit</strong></span>
+                    <div className="animate-fade-in" style={{ padding: '1rem', background: 'rgba(114, 184, 38, 0.1)', border: '1px solid var(--accent-color)', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#b4f177' }}>AI Suggested Price: <strong>₹{suggestedPrice}/unit</strong></span>
                       <button 
                         onClick={() => setPrice(suggestedPrice)}
                         style={{ background: 'transparent', border: 'none', color: 'var(--accent-color)', cursor: 'pointer', fontWeight: 'bold' }}
@@ -181,8 +181,8 @@ const tabStyle = {
 
 const activeTabStyle = {
   ...tabStyle,
-  background: 'rgba(139, 92, 246, 0.15)',
-  color: 'white',
+  background: 'rgba(114, 184, 38, 0.15)',
+  color: 'var(--text-primary)',
 }
 
 const labelStyle = {
@@ -194,9 +194,9 @@ const labelStyle = {
 
 const inputStyle = {
   width: '100%',
-  background: 'rgba(0,0,0,0.2)',
+  background: 'var(--glass-bg)',
   border: '1px solid var(--glass-border)',
-  color: 'white',
+  color: 'var(--text-primary)',
   padding: '0.75rem 1rem',
   borderRadius: '8px',
   outline: 'none'

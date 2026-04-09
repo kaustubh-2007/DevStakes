@@ -38,7 +38,7 @@ export default function ProductCard({ product, addToCart }) {
         </div>
         
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>
-          By <span style={{ color: 'white', fontWeight: 500 }}>{product.farmer}</span>
+          By <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{product.farmer}</span>
         </p>
         
         <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

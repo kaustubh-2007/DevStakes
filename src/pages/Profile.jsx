@@ -24,14 +24,14 @@ export default function Profile({ user }) {
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 1rem',
-              boxShadow: '0 8px 32px rgba(139, 92, 246, 0.4)'
+              boxShadow: '0 8px 32px rgba(114, 184, 38, 0.4)'
             }}>
               <User size={60} color="white" />
             </div>
             <h2 style={{ margin: '0 0 0.5rem 0', fontSize: '1.5rem' }}>{user.name}</h2>
             <span style={{ 
-              background: 'rgba(139, 92, 246, 0.2)', 
-              color: '#d8b4fe', 
+              background: 'rgba(114, 184, 38, 0.2)', 
+              color: '#b4f177', 
               padding: '0.25rem 1rem', 
               borderRadius: '20px', 
               fontSize: '0.9rem',

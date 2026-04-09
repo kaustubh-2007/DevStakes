@@ -36,7 +36,7 @@ export default function Marketplace({ addToCart }) {
                 border: '1px solid var(--glass-border)',
                 padding: '0.75rem 1rem 0.75rem 3rem',
                 borderRadius: '8px',
-                color: 'white',
+                color: 'var(--text-primary)',
                 outline: 'none',
                 minWidth: '250px'
               }}
@@ -51,7 +51,7 @@ export default function Marketplace({ addToCart }) {
                 onClick={() => setFilter(c)}
                 style={{
                   background: filter === c ? 'var(--accent-color)' : 'transparent',
-                  color: 'white',
+                  color: filter === c ? 'white' : 'var(--text-primary)',
                   border: 'none',
                   padding: '0.5rem 1rem',
                   borderRadius: '6px',
